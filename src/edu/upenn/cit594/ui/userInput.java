@@ -30,7 +30,7 @@ public class userInput {
     }
 
     private boolean isCorrect (String input) {
-        
+        return false;
 
     }
 }
