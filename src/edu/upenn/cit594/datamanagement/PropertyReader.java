@@ -1,7 +1,6 @@
 package edu.upenn.cit594.datamanagement;
 
 import edu.upenn.cit594.data.Residence;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,7 @@ public class PropertyReader {
             if (isValidResidence(total_livable_areaStr, market_valueStr, zip_codeStr)) {
                 double total_livable_area = Double.parseDouble(total_livable_areaStr);
                 double market_value = Double.parseDouble(market_valueStr);
-                int zip_code = Integer.parseInt(zip_codeStr.substring(0,5));
+                String zip_code = zip_codeStr.substring(0,5);
 
                 Residence current = new Residence(total_livable_area, market_value, zip_code);
                 residenceList.add(current);

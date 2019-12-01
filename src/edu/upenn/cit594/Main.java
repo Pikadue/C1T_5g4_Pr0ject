@@ -3,6 +3,7 @@ package edu.upenn.cit594;
 import edu.upenn.cit594.data.Residence;
 import edu.upenn.cit594.datamanagement.PopulationReader;
 import edu.upenn.cit594.datamanagement.PropertyReader;
+import edu.upenn.cit594.ui.UserInput;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -37,9 +38,13 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Input file not found");
         }
+        UserInput user1 = UserInput.getInstance();
+
+
 
 
     }
+
     private static boolean checkExtension(String ext) {
         return ext.equals("json") || ext.equals("csv");
     }
