@@ -8,10 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.upenn.cit594.data.ParkingViolation;
-<<<<<<< HEAD
-import edu.upenn.cit594.datamanagement​.ParkingViolationsReader;
-=======
->>>>>>> origin/master
+
 
 /*
  * This is one of the classes in the "Data Management" tier.
