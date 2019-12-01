@@ -9,24 +9,22 @@ import java.util.List;
 import java.util.Map;
 
 public class PopulationReader {
-    public HashMap<Integer, Integer> read(String fileName) throws FileNotFoundException {
-        Map<Integer, Integer> populationMap = new HashMap<>();//TODO
+    public Map<String, Integer> read(String fileName) throws FileNotFoundException {
+        Map<String, Integer> populationMap = new HashMap<>();//TODO
         File newFile = new File(fileName);
         BufferedReader br = new BufferedReader(new FileReader(newFile));
         String line;
         try{
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
-
+                String[] lineElements = line.split(" ");
+                int population = Integer.parseInt(lineElements[1]);
+                populationMap.put(lineElements[0], population);
 
             }
         } catch(IOException e){
             System.out.println("population file cannot be opened");
-
-
         }
-
-        return null;
+        return populationMap;
 
     }
 }
