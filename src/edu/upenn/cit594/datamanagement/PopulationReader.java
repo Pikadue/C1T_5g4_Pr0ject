@@ -21,6 +21,7 @@ public class PopulationReader {
 
             }
         } catch(IOException e){
+            System.out.println("population file cannot be opened");
 
 
         }

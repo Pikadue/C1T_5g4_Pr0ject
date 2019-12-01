@@ -78,7 +78,8 @@ public class PropertyReader {
         try {
             poR.read("population.txt");
         } catch (FileNotFoundException e) {
-            System.out.println("Population file not found");        }
+            System.out.println("Population file not found");
+        }
 
     }
 }
