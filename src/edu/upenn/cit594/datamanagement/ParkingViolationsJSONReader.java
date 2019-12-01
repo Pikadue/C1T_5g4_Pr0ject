@@ -12,7 +12,10 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import edu.upenn.cit594.data.ParkingViolation;
+<<<<<<< HEAD
 import edu.upenn.cit594.datamanagement​.ParkingViolationsReader;
+=======
+>>>>>>> origin/master
 
 /*
  * This is one of the classes in the "Data Management" tier.
