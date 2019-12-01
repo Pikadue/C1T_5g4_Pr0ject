@@ -5,9 +5,9 @@ public class Residence {
     private double totalLivableArea;
     //Dollar value of the home
     private double marketValue;
-    private int zipCode;
+    private String zipCode;
 
-    public Residence(double totalLivableArea, double marketValue, int zipCode){
+    public Residence(double totalLivableArea, double marketValue, String zipCode){
         this.totalLivableArea = totalLivableArea;
         this.marketValue = marketValue;
         this.zipCode = zipCode;
