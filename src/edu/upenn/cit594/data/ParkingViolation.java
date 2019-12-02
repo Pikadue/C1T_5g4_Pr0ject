@@ -24,5 +24,17 @@ public class ParkingViolation {
         this.fine = fine;
         this.state = state;
     }
+    
+    public int getFine() {
+    	return this.fine;
+    }
+    
+    public String getZipCode() {
+    	return this.zip_code;
+    }
+    
+    public String getReason() {
+    	return this.violation;
+    }
 
 }
