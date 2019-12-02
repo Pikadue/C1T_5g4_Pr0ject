@@ -7,8 +7,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class PropertyReader {
+    String fileName;
+    public PropertyReader(String fileName){
+        this.fileName = fileName;
+    };
 
-    public List<Residence> read(String fileName) throws IOException {
+    public List<Residence> read() throws IOException {
 
         List<Residence> residenceList = new ArrayList<>();//TODO
         File newFile = new File(fileName);
@@ -39,16 +43,17 @@ public class PropertyReader {
         return residenceList;
     }
 
+    /*Check if the information in current line is valid */
     private boolean isValidResidence(String livableArea, String marketValue, String zipCode) {
 
-        boolean validLivableArea = Pattern.matches("^\\d+\\.?\\d?$", livableArea);
-        boolean validMarketValue = Pattern.matches("^\\d+\\.?\\d?$", marketValue);
-        boolean validZipCode = Pattern.matches("^\\d{9}$", zipCode);
+        boolean validLivableArea = Pattern.matches("^\\d+\\.?\\d*?$", livableArea);
+        boolean validMarketValue = Pattern.matches("^\\d+\\.?\\d*?$", marketValue);
+        boolean validZipCode = Pattern.matches("^\\d{5,9}$", zipCode);
         return validLivableArea && validMarketValue && validZipCode;
     }
 
 
-
+    /* Find corresponding columns for 3 key fields*/
     private int[] findColumn(String firstLine) {
         int[] columns = new int[3];
         String[] headers = firstLine.split(",");
@@ -63,22 +68,6 @@ public class PropertyReader {
             }
         }
         return columns;
-
-    }
-
-    public static void main (String[] args) {
-        PropertyReader pr = new PropertyReader();
-        try {
-            List<Residence> lr = pr.read("sample.csv");
-        } catch (IOException e) {
-            System.out.println("Property file not found");
-        }
-        PopulationReader poR = new PopulationReader();
-        try {
-            poR.read("population.txt");
-        } catch (FileNotFoundException e) {
-            System.out.println("Population file not found");
-        }
 
     }
 }
