@@ -7,8 +7,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class PropertyReader {
+    String fileName;
+    public PropertyReader(String fileName){
+        this.fileName = fileName;
+    };
 
-    public List<Residence> read(String fileName) throws IOException {
+    public List<Residence> read() throws IOException {
 
         List<Residence> residenceList = new ArrayList<>();//TODO
         File newFile = new File(fileName);
@@ -39,6 +43,7 @@ public class PropertyReader {
         return residenceList;
     }
 
+    /*Check if the information in current line is valid */
     private boolean isValidResidence(String livableArea, String marketValue, String zipCode) {
 
         boolean validLivableArea = Pattern.matches("^\\d+\\.?\\d?$", livableArea);
@@ -48,7 +53,7 @@ public class PropertyReader {
     }
 
 
-
+    /* Find corresponding columns for 3 key fields*/
     private int[] findColumn(String firstLine) {
         int[] columns = new int[3];
         String[] headers = firstLine.split(",");
@@ -67,9 +72,9 @@ public class PropertyReader {
     }
 
     public static void main (String[] args) {
-        PropertyReader pr = new PropertyReader();
+        PropertyReader pr = new PropertyReader("sample.csv");
         try {
-            List<Residence> lr = pr.read("sample.csv");
+            List<Residence> lr = pr.read();
         } catch (IOException e) {
             System.out.println("Property file not found");
         }

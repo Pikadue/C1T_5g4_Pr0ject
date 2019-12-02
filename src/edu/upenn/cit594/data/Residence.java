@@ -17,4 +17,15 @@ public class Residence {
         return totalLivableArea + "-" + marketValue + "-" + zipCode;
     }
 
+    public double getTotalLivableArea() {
+        return totalLivableArea;
+    }
+
+    public double getMarketValue() {
+        return marketValue;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
 }

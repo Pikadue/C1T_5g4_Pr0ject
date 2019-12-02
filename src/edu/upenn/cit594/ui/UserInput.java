@@ -1,5 +1,10 @@
 package edu.upenn.cit594.ui;
 
+import edu.upenn.cit594.processor​.ResidentialMarketValueCollector;
+import edu.upenn.cit594.processor​.ResidentialProcessor;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -10,21 +15,23 @@ public class UserInput {
         start();
 
     }
-    public static UserInput getInstance(){
-        if(obj == null) obj = new UserInput();
+
+    public static UserInput getInstance() {
+        if (obj == null) obj = new UserInput();
 
         return obj;
     }
-    private void start(){
 
-        Scanner in  = new Scanner(System.in);
+    private void start() {
+
+        Scanner in = new Scanner(System.in);
         initialize();
-        while (in.hasNextLine()){
+        while (in.hasNextLine()) {
 
             String userInput = in.nextLine();
 
             if (isCorrect(userInput)) {
-                switch(userInput) {
+                switch (userInput) {
                     case "0":
                         System.exit(0);
                         break;
@@ -36,13 +43,9 @@ public class UserInput {
                         break;
                     case "3":
                         System.out.println("Please enter a ZIP code:");
-                        if (in.hasNextLine()){
+                        if (in.hasNextLine()) {
                             String zip = in.nextLine();
-                            if (isValidZip(zip)) {
-                                System.out.printf("The average residential market value of %s is %d\n", zip, 666);
-                            } else {
-
-                            }
+                            handleThree(zip);
                         }
                         break;
                     case "4":
@@ -64,9 +67,9 @@ public class UserInput {
         }
 
 
-
     }
-    private void initialize(){
+
+    private void initialize() {
         System.out.println("Enter a number between 0-6, to conduct the actions below:\n0: exit\n1: show total " +
                 "population for all ZIP codes\n2: show total parking fines per capita for each ZIP code\n" +
                 "3: show average market value for residences in a specified ZIP code\n" +
@@ -75,11 +78,30 @@ public class UserInput {
                 "6: show the results of our custom feature");
 
     }
-    private boolean isCorrect (String input) {
+
+    private boolean isCorrect(String input) {
         return Pattern.matches("\\d", input);
 
     }
-    private boolean isValidZip (String input) {
+    Map<String, Double> requestedZIP_P3 = new HashMap<>();
+    private void handleThree(String zip) {
+
+        double result = 0;
+        if (isValidZip(zip)) {
+            if (requestedZIP_P3.keySet().contains(zip)) {
+                result = requestedZIP_P3.get(zip);
+            } else {
+                ResidentialMarketValueCollector marketValueCollector = new ResidentialMarketValueCollector();
+                ResidentialProcessor residentialProcessor = new ResidentialProcessor(marketValueCollector);
+                result = residentialProcessor.process(zip);
+
+                requestedZIP_P3.put(zip, result);
+            }
+        }
+        System.out.printf("The average residential market value for ZIP %s is %d\n", zip, (int) 333.6);
+    }
+
+    private boolean isValidZip(String input) {
         return Pattern.matches("\\d{5}", input);
 
     }

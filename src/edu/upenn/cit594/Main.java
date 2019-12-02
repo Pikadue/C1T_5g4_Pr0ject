@@ -3,6 +3,7 @@ package edu.upenn.cit594;
 import edu.upenn.cit594.data.Residence;
 import edu.upenn.cit594.datamanagement.PopulationReader;
 import edu.upenn.cit594.datamanagement.PropertyReader;
+import edu.upenn.cit594.processor​.ResidentialProcessor;
 import edu.upenn.cit594.ui.UserInput;
 
 import java.io.FileNotFoundException;
@@ -30,14 +31,10 @@ public class Main {
         String populationFileName = args[3];
         String logFileName = args[4];
 
-        PropertyReader pr = new PropertyReader();
+        PropertyReader pr = new PropertyReader("sample.csv");
         PopulationReader poR = new PopulationReader();
-        try {
-            List<Residence> lr = pr.read("sample.csv");
-            poR.read("population.txt");
-        } catch (IOException e) {
-            System.out.println("Input file not found");
-        }
+        ResidentialProcessor residentialProcessor = new ResidentialProcessor(pr);
+
         UserInput user1 = UserInput.getInstance();
 
 
