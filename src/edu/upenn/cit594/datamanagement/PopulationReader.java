@@ -39,8 +39,13 @@ public class PopulationReader {
         return populationMap;
     }
 
-    public static Map<String, Integer> getPopulationMap() {
-        return populationMap;
+    public int getPopulationPerZIP(String zip) {
+        int  populationPerZIP = 0;
+        if (populationMap.keySet().contains(zip)) {
+            populationPerZIP = populationMap.get(zip);
+
+        }
+        return populationPerZIP;
     }
 
     public int getTotalPopulation() {

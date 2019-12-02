@@ -48,14 +48,24 @@ public class UserInput {
                         if (in.hasNextLine()) {
                             String zip = in.nextLine();
                             double result = handleThree(zip);
-                            System.out.printf("The average residential market value for ZIP %s is %d\n", zip, (int)result);
+                            System.out.printf("The average residential market value for ZIP '%s' is %d\n", zip, (int)result);
                         }
                         break;
                     case "4":
-                        System.out.println("Select 4");
+                        System.out.println("Please enter a ZIP code:");
+                        if (in.hasNextLine()) {
+                            String zip = in.nextLine();
+                            double result = handleFour(zip);
+                            System.out.printf("The average residential total livable area for ZIP %s is %d\n", zip, (int)result);
+                        }
                         break;
                     case "5":
-                        System.out.println("Select 5");
+                        System.out.println("Please enter a ZIP code:");
+                        if (in.hasNextLine()) {
+                            String zip = in.nextLine();
+                            double result = handleFive(zip);
+                            System.out.printf("The total residential market value per capita for ZIP %s is %d\n", zip, (int)result);
+                        }
                         break;
                     case "6":
                         System.out.println("Select 6");
@@ -130,13 +140,16 @@ public class UserInput {
             if (requestedZIP_P5.keySet().contains(zip)) {
                 result = requestedZIP_P5.get(zip);
             } else {
-                ResidentialTLACollector TLACollector = new ResidentialTLACollector();
-                ResidentialProcessor residentialProcessor = new ResidentialProcessor(TLACollector);
+                PopulationReader populationReader = new PopulationReader();
+                int populationPerZIP = populationReader.getPopulationPerZIP(zip);
+                ResidentialMarketValueCollector marketValueCollector = new ResidentialMarketValueCollector();
+                ResidentialProcessor residentialProcessor = new ResidentialProcessor(marketValueCollector);
                 double sumAndCount[] = residentialProcessor.process(zip);
-                if (sumAndCount[1]!=0) {
-                    result = sumAndCount[0]/sumAndCount[1];
+                if (populationPerZIP != 0 && sumAndCount[1]!=0) {
+
+                    result = sumAndCount[0]/populationPerZIP;
                 }
-                requestedZIP_P3.put(zip, result);
+                requestedZIP_P5.put(zip, result);
             }
         }
         return result;
