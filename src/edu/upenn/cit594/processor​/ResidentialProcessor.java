@@ -52,5 +52,4 @@ public class ResidentialProcessor {
         return residenceList;
     }
 
-
 }

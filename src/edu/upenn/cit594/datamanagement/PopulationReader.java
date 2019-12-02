@@ -42,6 +42,7 @@ public class PopulationReader {
         return populationMap;
     }
 
+    // implementation of problem #1: show the total population for all ZIP Codes
     public int getPopulationPerZIP(String zip) {
         int  populationPerZIP = 0;
         if (populationMap.keySet().contains(zip)) {
@@ -53,5 +54,9 @@ public class PopulationReader {
 
     public int getTotalPopulation() {
         return totalPopulation;
+    }
+    
+    public static Map<String, Integer> getPopulationMap(){
+    	return populationMap;
     }
 }

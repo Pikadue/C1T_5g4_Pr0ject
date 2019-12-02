@@ -3,6 +3,7 @@ package edu.upenn.cit594;
 import edu.upenn.cit594.data.Residence;
 import edu.upenn.cit594.datamanagement.PopulationReader;
 import edu.upenn.cit594.datamanagement.PropertyReader;
+import edu.upenn.cit594.processor​.ParkingViolationsProcessor;
 import edu.upenn.cit594.processor​.ResidentialProcessor;
 import edu.upenn.cit594.ui.UserInput;
 
@@ -35,6 +36,7 @@ public class Main {
         PropertyReader pr = new PropertyReader("testProperty.csv");
         ResidentialProcessor residentialProcessor = new ResidentialProcessor(pr);
         PopulationReader populationReader = new PopulationReader("population.txt");
+        ParkingViolationsProcessor parkingViolationProcessor = new ParkingViolationsProcessor(ticketFormat,ticketFileName);
 
 
         UserInput user1 = UserInput.getInstance();
