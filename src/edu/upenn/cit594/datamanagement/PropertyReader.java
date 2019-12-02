@@ -46,9 +46,9 @@ public class PropertyReader {
     /*Check if the information in current line is valid */
     private boolean isValidResidence(String livableArea, String marketValue, String zipCode) {
 
-        boolean validLivableArea = Pattern.matches("^\\d+\\.?\\d?$", livableArea);
-        boolean validMarketValue = Pattern.matches("^\\d+\\.?\\d?$", marketValue);
-        boolean validZipCode = Pattern.matches("^\\d{9}$", zipCode);
+        boolean validLivableArea = Pattern.matches("^\\d+\\.?\\d*?$", livableArea);
+        boolean validMarketValue = Pattern.matches("^\\d+\\.?\\d*?$", marketValue);
+        boolean validZipCode = Pattern.matches("^\\d{5,9}$", zipCode);
         return validLivableArea && validMarketValue && validZipCode;
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ResidentialProcessor {
     ResidentialInformationCollector infoCollector;
-    private static List<Residence> residenceList;
+    static List<Residence> residenceList;
     PropertyReader pr;
 
     public ResidentialProcessor(ResidentialInformationCollector infoCollector) {

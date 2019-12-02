@@ -71,11 +71,14 @@ public class UserInput {
                         System.out.println("Select 6");
                         break;
                     default:
+//                        in.next();
                         System.out.println("Invalid selection");
                         System.exit(0);
                 }
                 initialize();
 
+            } else {
+                System.out.println("Please select from 0-6.");
             }
         }
 
@@ -115,6 +118,7 @@ public class UserInput {
         }
         return result;
     }
+
     Map<String, Double> requestedZIP_P4 = new HashMap<>();
     private double handleFour(String zip) {
         double result = 0;

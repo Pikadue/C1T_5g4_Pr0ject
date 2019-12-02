@@ -32,7 +32,7 @@ public class Main {
         String populationFileName = args[3];
         String logFileName = args[4];
 
-        PropertyReader pr = new PropertyReader("sample.csv");
+        PropertyReader pr = new PropertyReader("testProperty.csv");
         ResidentialProcessor residentialProcessor = new ResidentialProcessor(pr);
         PopulationReader populationReader = new PopulationReader("population.txt");
 
