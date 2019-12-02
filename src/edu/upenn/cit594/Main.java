@@ -9,6 +9,7 @@ import edu.upenn.cit594.ui.UserInput;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -32,8 +33,9 @@ public class Main {
         String logFileName = args[4];
 
         PropertyReader pr = new PropertyReader("sample.csv");
-        PopulationReader poR = new PopulationReader();
         ResidentialProcessor residentialProcessor = new ResidentialProcessor(pr);
+        PopulationReader populationReader = new PopulationReader("population.txt");
+
 
         UserInput user1 = UserInput.getInstance();
 

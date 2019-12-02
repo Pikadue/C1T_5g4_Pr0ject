@@ -1,18 +1,27 @@
 package edu.upenn.cit594.datamanagement;
 
-import edu.upenn.cit594.data.Residence;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PopulationReader {
-    Map<String, Integer> populationMap = new HashMap<>();
-    int totalPopulation;
+    private String fileName;
+    private static Map<String, Integer> populationMap = new HashMap<>();
+    private static int totalPopulation;
+    public PopulationReader(){};
+    public PopulationReader (String fileName) {
+        this.fileName = fileName;
+        try {
+            populationMap = this.read();
+        } catch (FileNotFoundException e) {
+            System.out.println("Population file is not available. Program exits");
+            System.exit(0);
+        }
 
-    public Map<String, Integer> read(String fileName) throws FileNotFoundException {
+    }
+
+    public Map<String, Integer> read() throws FileNotFoundException {
         File newFile = new File(fileName);
         BufferedReader br = new BufferedReader(new FileReader(newFile));
         String line;
@@ -28,6 +37,13 @@ public class PopulationReader {
             System.out.println("population file cannot be opened");
         }
         return populationMap;
+    }
 
+    public static Map<String, Integer> getPopulationMap() {
+        return populationMap;
+    }
+
+    public int getTotalPopulation() {
+        return totalPopulation;
     }
 }

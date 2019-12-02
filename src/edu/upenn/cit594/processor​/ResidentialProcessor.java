@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ResidentialProcessor {
     ResidentialInformationCollector infoCollector;
-    static List<Residence> residenceList;
+    private static List<Residence> residenceList;
     PropertyReader pr;
 
     public ResidentialProcessor(ResidentialInformationCollector infoCollector) {
@@ -19,14 +19,25 @@ public class ResidentialProcessor {
     public ResidentialProcessor(PropertyReader pr) {
         this.pr = pr;
         try {
-            residenceList =  pr.read();
+            residenceList = pr.read();
         } catch (IOException e) {
             System.out.println("The property file is unavailable.Program exits!");
             System.exit(0);
         }
     }
 
-    public List<Residence> selectByZip(String zip) {
+    public double[] process(String zip) {
+        List<Residence> selectedByZip = selectByZip(zip);
+        double[]information = infoCollector.getInformation(selectedByZip);
+        int len = information.length;
+        double sum = 0;
+        for (int i = 0; i < len; i++) {
+            sum += information[i];
+        }
+        //double average = sum / len;
+        return new double[] {sum, len};
+    }
+    private List<Residence> selectByZip(String zip) {
         List<Residence> residenceListZIP = new ArrayList<>();
         for (Residence r : residenceList) {
             if (r.getZipCode().equals(zip)) {
@@ -37,17 +48,8 @@ public class ResidentialProcessor {
         return residenceListZIP;
     }
 
-    public double process(String zip) {
-        double[] information;
-        List<Residence> selectedByZip = selectByZip(zip);
-        information = infoCollector.getInformation(selectedByZip);
-        int len = information.length;
-        double sum = 0;
-        for (int i = 0; i < len; i++) {
-            sum += information[i];
-        }
-        double average = sum / len;
-        return average;
+    public List<Residence> getResidenceList() {
+        return residenceList;
     }
 
 

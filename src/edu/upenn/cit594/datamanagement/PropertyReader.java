@@ -70,20 +70,4 @@ public class PropertyReader {
         return columns;
 
     }
-
-    public static void main (String[] args) {
-        PropertyReader pr = new PropertyReader("sample.csv");
-        try {
-            List<Residence> lr = pr.read();
-        } catch (IOException e) {
-            System.out.println("Property file not found");
-        }
-        PopulationReader poR = new PopulationReader();
-        try {
-            poR.read("population.txt");
-        } catch (FileNotFoundException e) {
-            System.out.println("Population file not found");
-        }
-
-    }
 }
