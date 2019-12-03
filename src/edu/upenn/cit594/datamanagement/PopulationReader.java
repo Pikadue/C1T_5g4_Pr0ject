@@ -31,11 +31,17 @@ public class PopulationReader {
                 int population = Integer.parseInt(lineElements[1]);
                 totalPopulation += population;
                 populationMap.put(lineElements[0], population);
-                br.close();//todo
+
 
             }
         } catch (IOException e) {
             System.out.println("population file cannot be opened");
+        } finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();//todo
+            }
         }
 
 

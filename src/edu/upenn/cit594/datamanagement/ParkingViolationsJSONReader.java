@@ -59,12 +59,12 @@ public class ParkingViolationsJSONReader implements ParkingViolationsReader{
 				 * "fine":36,"state":"PA"}
 				 */
 				
-				String ticket_number = (String) parkingViolation.get("ticket_number");
+				String ticket_number = String.valueOf(parkingViolation.get("ticket_number"));
 				String date = (String) parkingViolation.get("date");
 				String plate_id = (String) parkingViolation.get("plate_id");
 				String zip_code = (String) parkingViolation.get("zip_code");
 				String violation = (String) parkingViolation.get("violation");
-				int fine = (int) parkingViolation.get("fine");
+				int fine = Integer.valueOf(String.valueOf(parkingViolation.get("fine")));
 				String state = (String) parkingViolation.get("state");
 				
 				parkingViolationsList.add(new ParkingViolation(ticket_number, plate_id, date, 
@@ -72,7 +72,7 @@ public class ParkingViolationsJSONReader implements ParkingViolationsReader{
 			}
 			
 		} catch (IOException | ParseException e) {
-			System.out.println("Invalid file!");
+			System.out.println("Invalid parking file!");
             System.exit(0);
 		}
 		

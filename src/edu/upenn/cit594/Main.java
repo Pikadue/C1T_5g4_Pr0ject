@@ -36,7 +36,7 @@ public class Main {
         PropertyReader pr = new PropertyReader("testProperty.csv");
         ResidentialProcessor residentialProcessor = new ResidentialProcessor(pr);
         PopulationReader populationReader = new PopulationReader("population.txt");
-        ParkingViolationsProcessor parkingViolationProcessor = new ParkingViolationsProcessor(ticketFormat,ticketFileName);
+//        ParkingViolationsProcessor parkingViolationProcessor = new ParkingViolationsProcessor(ticketFormat,ticketFileName);
 
 
         UserInput user1 = UserInput.getInstance();

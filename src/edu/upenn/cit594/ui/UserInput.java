@@ -38,10 +38,10 @@ public class UserInput {
                         System.exit(0);
                         break;
                     case "1":
-                        System.out.println("Select 1");
+                        System.out.println("Select 1");//TODO xh
                         break;
                     case "2":
-                        System.out.println("Select 2");
+                        System.out.println("Select 2");//TODO xh
                         break;
                     case "3":
                         System.out.println("Please enter a ZIP code:");
@@ -68,7 +68,7 @@ public class UserInput {
                         }
                         break;
                     case "6":
-                        System.out.println("Select 6");
+                        System.out.println("Select 6");//TODO
                         break;
                     default:
 //                        in.next();

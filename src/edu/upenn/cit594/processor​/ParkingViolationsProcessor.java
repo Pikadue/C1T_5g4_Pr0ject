@@ -26,9 +26,9 @@ public class ParkingViolationsProcessor {
 			parkingViolationsReader = new ParkingViolationsCSVReader(input);
 		}
 
-		parkingViolationList = parkingViolationsReader.getAllParkingViolation();
-		parkingViolationFineMap = generateParkingFineMap();
-		violationReasonMap = getViolationReasonMap();
+		this.parkingViolationList = parkingViolationsReader.getAllParkingViolation();
+		this.parkingViolationFineMap = generateParkingFineMap();
+		this.violationReasonMap = getViolationReasonMap();
 
 		populationMap = PopulationReader.getPopulationMap(); 
 	}
