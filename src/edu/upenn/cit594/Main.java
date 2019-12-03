@@ -33,10 +33,12 @@ public class Main {
         String populationFileName = args[3];
         String logFileName = args[4];
 
-        PropertyReader pr = new PropertyReader("testProperty.csv");
+//        PropertyReader pr = new PropertyReader("testProperty.csv");
+        PropertyReader pr = new PropertyReader(propertyFileName);
         ResidentialProcessor residentialProcessor = new ResidentialProcessor(pr);
-        PopulationReader populationReader = new PopulationReader("population.txt");
-//        ParkingViolationsProcessor parkingViolationProcessor = new ParkingViolationsProcessor(ticketFormat,ticketFileName);
+//        PopulationReader populationReader = new PopulationReader("population.txt");
+        PopulationReader populationReader = new PopulationReader(populationFileName);
+        ParkingViolationsProcessor parkingViolationProcessor = new ParkingViolationsProcessor(ticketFormat,ticketFileName);
 
 
         UserInput user1 = UserInput.getInstance();

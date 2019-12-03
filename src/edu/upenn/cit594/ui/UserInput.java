@@ -1,6 +1,7 @@
 package edu.upenn.cit594.ui;
 
 import edu.upenn.cit594.datamanagement.PopulationReader;
+import edu.upenn.cit594.processor​.ParkingViolationsProcessor;
 import edu.upenn.cit594.processor​.ResidentialMarketValueCollector;
 import edu.upenn.cit594.processor​.ResidentialProcessor;
 import edu.upenn.cit594.processor​.ResidentialTLACollector;
@@ -12,6 +13,9 @@ import java.util.regex.Pattern;
 
 public class UserInput {
     private static UserInput obj;
+    private PopulationReader populationReader = new PopulationReader();
+//    private ParkingViolationsProcessor parkingViolationProcessor = new ParkingViolationsProcessor();
+    
 
     private UserInput() {
         start();
@@ -38,10 +42,10 @@ public class UserInput {
                         System.exit(0);
                         break;
                     case "1":
-                        System.out.println("Select 1");//TODO xh
+                        System.out.println(populationReader.getTotalPopulation());
                         break;
                     case "2":
-                        System.out.println("Select 2");//TODO xh
+                        System.out.println(ParkingViolationsProcessor.getAvgFine());
                         break;
                     case "3":
                         System.out.println("Please enter a ZIP code:");
@@ -68,7 +72,7 @@ public class UserInput {
                         }
                         break;
                     case "6":
-                        System.out.println("Select 6");//TODO
+                        System.out.println(ParkingViolationsProcessor.getViolationReasons());//TODO
                         break;
                     default:
 //                        in.next();

@@ -36,5 +36,9 @@ public class ParkingViolation {
     public String getReason() {
     	return this.violation;
     }
+    
+    public String getState() {
+    	return this.state;
+    }
 
 }
