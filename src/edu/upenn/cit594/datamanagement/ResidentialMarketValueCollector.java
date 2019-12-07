@@ -11,6 +11,7 @@ public class ResidentialMarketValueCollector implements ResidentialInformationCo
         int i = 0;
         for (Residence r: listOfResidence) {
             marketValuePerZIP[i] = r.getMarketValue();
+//            System.out.println(i+" market value is: "+marketValuePerZIP[i]);
             i++;
         }
     return marketValuePerZIP;

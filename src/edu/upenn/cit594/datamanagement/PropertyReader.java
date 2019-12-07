@@ -21,17 +21,17 @@ public class PropertyReader {
         Logging.getInstance().log(fileName);
 
         BufferedReader br = new BufferedReader(new FileReader(newFile));
-        String firstLine = null;
+        String firstLine;
         firstLine = br.readLine();
 
         //[0] total_livable_area [1] market_value [2]zip_code
         int[] informationColumn = findColumn(firstLine);
-        String line = null;
+        String line;
         while((line = br.readLine()) != null) {
             String[] lineElements = line.split(",");
             String total_livable_areaStr = lineElements[informationColumn[0]];
             String market_valueStr = lineElements[informationColumn[1]];
-            String zip_codeStr = lineElements[informationColumn[2]];
+            String zip_codeStr = lineElements[informationColumn[2]].strip();
 
             if (isValidResidence(total_livable_areaStr, market_valueStr, zip_codeStr)) {
                 double total_livable_area = Double.parseDouble(total_livable_areaStr);
@@ -52,7 +52,7 @@ public class PropertyReader {
 
         boolean validLivableArea = Pattern.matches("^\\d+\\.?\\d*?$", livableArea);
         boolean validMarketValue = Pattern.matches("^\\d+\\.?\\d*?$", marketValue);
-        boolean validZipCode = Pattern.matches("^\\d{5}-?\\d{4}?$", zipCode);
+        boolean validZipCode = Pattern.matches("^\\d{5}-?\\d*?$", zipCode);
         return validLivableArea && validMarketValue && validZipCode;
     }
 

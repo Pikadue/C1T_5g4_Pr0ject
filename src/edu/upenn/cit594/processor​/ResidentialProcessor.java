@@ -35,7 +35,7 @@ public class ResidentialProcessor {
         for (int i = 0; i < len; i++) {
             sum += information[i];
         }
-        System.out.println("The sum of market value is: " +sum+" "+len);
+//        System.out.println("The sum of market value is: " +sum+" "+len);
         //double average = sum / len;
         return new double[] {sum, len};
     }
@@ -44,6 +44,7 @@ public class ResidentialProcessor {
         for (Residence r : residenceList) {
             if (r.getZipCode().equals(zip)) {
                 residenceListZIP.add(r);
+//                System.out.println(r);
 
             }
         }
