@@ -48,7 +48,7 @@ public class PropertyReader {
 
         boolean validLivableArea = Pattern.matches("^\\d+\\.?\\d*?$", livableArea);
         boolean validMarketValue = Pattern.matches("^\\d+\\.?\\d*?$", marketValue);
-        boolean validZipCode = Pattern.matches("^\\d{5,9}$", zipCode);
+        boolean validZipCode = Pattern.matches("^\\d{5}-?\\d{4}?$", zipCode);
         return validLivableArea && validMarketValue && validZipCode;
     }
 

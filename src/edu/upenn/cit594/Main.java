@@ -3,6 +3,7 @@ package edu.upenn.cit594;
 import edu.upenn.cit594.data.Residence;
 import edu.upenn.cit594.datamanagement.PopulationReader;
 import edu.upenn.cit594.datamanagement.PropertyReader;
+import edu.upenn.cit594.logging.Logging;
 import edu.upenn.cit594.processor​.ParkingViolationsProcessor;
 import edu.upenn.cit594.processor​.ResidentialProcessor;
 import edu.upenn.cit594.ui.UserInput;
@@ -16,13 +17,13 @@ public class Main {
     public static void main(String[] args) {
         // Check number of args
         if (args.length != 5) {
-            System.out.println("Wrong number of arguments. Program exit!");
+            System.out.println("Wrong number of arguments. Program exits!");
             System.exit(0);
         }
 
         // Check if the extension meets txt/json
         if (!checkExtension(args[0])) {
-            System.out.println("Wrong tweet file format. Should be '.json or .text'. Program exit!");
+            System.out.println("Wrong tweet file format. Should be '.json or .text'. Program exits!");
             System.exit(0);
 
         }
@@ -33,15 +34,14 @@ public class Main {
         String populationFileName = args[3];
         String logFileName = args[4];
 
-//        PropertyReader pr = new PropertyReader("testProperty.csv");
         PropertyReader pr = new PropertyReader(propertyFileName);
         ResidentialProcessor residentialProcessor = new ResidentialProcessor(pr);
-//        PopulationReader populationReader = new PopulationReader("population.txt");
         PopulationReader populationReader = new PopulationReader(populationFileName);
         ParkingViolationsProcessor parkingViolationProcessor = new ParkingViolationsProcessor(ticketFormat,ticketFileName);
 
 
         UserInput user1 = UserInput.getInstance();
+        Logging myLogging = Logging.getInstance(logFileName).write();
 
 
 

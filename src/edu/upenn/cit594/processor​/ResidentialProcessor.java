@@ -21,7 +21,7 @@ public class ResidentialProcessor {
         try {
             residenceList = pr.read();
         } catch (IOException e) {
-            System.out.println("The property file is unavailable.Program exits!");
+            System.out.println("The property file is unavailable. Program exits!");
             System.exit(0);
         }
     }
@@ -34,6 +34,7 @@ public class ResidentialProcessor {
         for (int i = 0; i < len; i++) {
             sum += information[i];
         }
+        System.out.println("The sum of market value is: " +sum+" "+len);
         //double average = sum / len;
         return new double[] {sum, len};
     }
