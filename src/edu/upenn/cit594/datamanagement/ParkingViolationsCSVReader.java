@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.upenn.cit594.data.ParkingViolation;
+import edu.upenn.cit594.logging.Logging;
 
 
 /*
@@ -17,12 +18,12 @@ import edu.upenn.cit594.data.ParkingViolation;
  */
 
 public class ParkingViolationsCSVReader implements ParkingViolationsReader{
-	String filename;
+	String fileName;
 	List<ParkingViolation> parkingViolationsList;
 
 
 	public ParkingViolationsCSVReader(String input){
-		filename = input;
+		fileName = input;
 		parkingViolationsList = new ArrayList<>();
 	}
 	
@@ -31,9 +32,10 @@ public class ParkingViolationsCSVReader implements ParkingViolationsReader{
 		// TODO Auto-generated method stub
 		String row = null;
 		try {
-			FileReader fileReader = new FileReader(filename);
+			FileReader fileReader = new FileReader(fileName);
 			BufferedReader csvReader = new BufferedReader(fileReader);
 			try {
+				Logging.getInstance().log(fileName);
 				while ((row = csvReader.readLine()) != null) {
 				    String[] data = row.split(",");
 				    /*

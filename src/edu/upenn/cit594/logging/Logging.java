@@ -8,17 +8,17 @@ public class Logging {
 
     private static Logging obj;
     private String fileName;
-    private FileWriter fw;
+    private static File file;
 
     private Logging(String fileName) {
 
         this.fileName = fileName;
-        try {
-            this.fw = new FileWriter(new File(fileName));
-        } catch (IOException e) {
-            System.out.println("Fail creating output file.");
-        }
+        file = new File(fileName);
 
+    }
+
+    public static Logging getInstance() {
+        return obj;
     }
 
     public static Logging getInstance(String fileName) {
@@ -30,9 +30,16 @@ public class Logging {
 
     }
 
-    public void write(String output) {
+    public void log(String message) {
         long time = System.currentTimeMillis();
-        System.out.printf("Time: %d %s%n", time, output);
-
+        System.out.printf("Time: %d %s%n", time, message);
+        try {
+            FileWriter out = new FileWriter(Logging.file, true);
+            out.write(time + " " + message);
+            out.close();
+        } catch (IOException e) {
+            System.err.println("ERROR: Could not write to log file");
+        }
     }
+
 }

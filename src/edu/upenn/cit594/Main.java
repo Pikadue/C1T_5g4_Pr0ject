@@ -10,6 +10,8 @@ import edu.upenn.cit594.ui.UserInput;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -34,14 +36,14 @@ public class Main {
         String populationFileName = args[3];
         String logFileName = args[4];
 
+        Logging.getInstance(logFileName).log(String.join(" ",args));
+
+
         PropertyReader pr = new PropertyReader(propertyFileName);
         ResidentialProcessor residentialProcessor = new ResidentialProcessor(pr);
         PopulationReader populationReader = new PopulationReader(populationFileName);
         ParkingViolationsProcessor parkingViolationProcessor = new ParkingViolationsProcessor(ticketFormat,ticketFileName);
-
-
         UserInput user1 = UserInput.getInstance();
-        Logging myLogging = Logging.getInstance(logFileName).write();
 
 
 
