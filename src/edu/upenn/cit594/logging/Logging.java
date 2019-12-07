@@ -32,10 +32,10 @@ public class Logging {
 
     public void log(String message) {
         long time = System.currentTimeMillis();
-        System.out.printf("Time: %d %s%n", time, message);
+//        System.out.printf("Time: %d %s%n", time, message);
         try {
             FileWriter out = new FileWriter(Logging.file, true);
-            out.write(time + " " + message);
+            out.write(time + " " + message+"\n");
             out.close();
         } catch (IOException e) {
             System.err.println("ERROR: Could not write to log file");

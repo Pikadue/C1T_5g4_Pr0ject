@@ -33,9 +33,9 @@ public class ParkingViolationsCSVReader implements ParkingViolationsReader{
 		String row = null;
 		try {
 			FileReader fileReader = new FileReader(fileName);
+			Logging.getInstance().log(fileName);
 			BufferedReader csvReader = new BufferedReader(fileReader);
 			try {
-				Logging.getInstance().log(fileName);
 				while ((row = csvReader.readLine()) != null) {
 				    String[] data = row.split(",");
 				    /*

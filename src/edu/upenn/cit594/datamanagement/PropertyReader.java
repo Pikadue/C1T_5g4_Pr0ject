@@ -1,6 +1,8 @@
 package edu.upenn.cit594.datamanagement;
 
 import edu.upenn.cit594.data.Residence;
+import edu.upenn.cit594.logging.Logging;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,8 @@ public class PropertyReader {
 
         List<Residence> residenceList = new ArrayList<>();//TODO
         File newFile = new File(fileName);
+        Logging.getInstance().log(fileName);
+
         BufferedReader br = new BufferedReader(new FileReader(newFile));
         String firstLine = null;
         firstLine = br.readLine();

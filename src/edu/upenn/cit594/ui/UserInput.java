@@ -1,10 +1,11 @@
 package edu.upenn.cit594.ui;
 
 import edu.upenn.cit594.datamanagement.PopulationReader;
+import edu.upenn.cit594.logging.Logging;
 import edu.upenn.cit594.processor​.ParkingViolationsProcessor;
-import edu.upenn.cit594.processor​.ResidentialMarketValueCollector;
+import edu.upenn.cit594.datamanagement.ResidentialMarketValueCollector;
 import edu.upenn.cit594.processor​.ResidentialProcessor;
-import edu.upenn.cit594.processor​.ResidentialTLACollector;
+import edu.upenn.cit594.datamanagement.ResidentialTLACollector;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +36,7 @@ public class UserInput {
         while (in.hasNextLine()) {
 
             String userInput = in.nextLine();
-
+            Logging.getInstance().log(userInput);
             if (isCorrect(userInput)) {
                 switch (userInput) {
                     case "0":
@@ -51,6 +52,7 @@ public class UserInput {
                         System.out.println("Please enter a ZIP code:");
                         if (in.hasNextLine()) {
                             String zip = in.nextLine();
+                            Logging.getInstance().log(zip);
                             double result = handleThree(zip);
                             System.out.printf("The average residential market value for ZIP '%s' is %d\n", zip, (int)result);
                         }
@@ -59,6 +61,7 @@ public class UserInput {
                         System.out.println("Please enter a ZIP code:");
                         if (in.hasNextLine()) {
                             String zip = in.nextLine();
+                            Logging.getInstance().log(zip);
                             double result = handleFour(zip);
                             System.out.printf("The average residential total livable area for ZIP %s is %d\n", zip, (int)result);
                         }
@@ -67,17 +70,18 @@ public class UserInput {
                         System.out.println("Please enter a ZIP code:");
                         if (in.hasNextLine()) {
                             String zip = in.nextLine();
+                            Logging.getInstance().log(zip);
                             double result = handleFive(zip);
                             System.out.printf("The total residential market value per capita for ZIP %s is %d\n", zip, (int)result);
                         }
                         break;
                     case "6":
-                        System.out.println(ParkingViolationsProcessor.getViolationReasons());//TODO
+                        System.out.println(ParkingViolationsProcessor.getViolationReasons());
                         break;
                     default:
 //                        in.next();
                         System.out.println("Invalid selection");
-                        System.exit(0);
+//                        System.exit(0);
                 }
                 initialize();
 

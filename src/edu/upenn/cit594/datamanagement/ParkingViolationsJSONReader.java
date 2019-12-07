@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import edu.upenn.cit594.logging.Logging;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -21,12 +22,12 @@ import edu.upenn.cit594.data.ParkingViolation;
  */
 
 public class ParkingViolationsJSONReader implements ParkingViolationsReader{
-	String filename;
+	String fileName;
 	List<ParkingViolation> parkingViolationsList;
 
 
 	public ParkingViolationsJSONReader(String input){
-		filename = input;
+		fileName = input;
 		parkingViolationsList = new ArrayList<>();
 	}
 
@@ -39,7 +40,9 @@ public class ParkingViolationsJSONReader implements ParkingViolationsReader{
 		JSONArray parkingViolationArray;
 		
 		try {
-			FileReader fileReader = new FileReader(filename);
+			FileReader fileReader = new FileReader(fileName);
+			Logging.getInstance().log(fileName);
+
 			Object obj = parser.parse(fileReader);
 			parkingViolationArray = (JSONArray) obj;
 			// use an iterator to iterate over each element of the array 

@@ -2,6 +2,7 @@ package edu.upenn.cit594.processor​;
 
 import edu.upenn.cit594.data.Residence;
 import edu.upenn.cit594.datamanagement.PropertyReader;
+import edu.upenn.cit594.datamanagement.ResidentialInformationCollector;
 
 import java.io.IOException;
 import java.util.ArrayList;

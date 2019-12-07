@@ -1,6 +1,8 @@
 package edu.upenn.cit594.datamanagement;
 
 
+import edu.upenn.cit594.logging.Logging;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +25,8 @@ public class PopulationReader {
 
     public Map<String, Integer> read() throws FileNotFoundException {
         File newFile = new File(fileName);
+        Logging.getInstance().log(fileName);
+
         BufferedReader br = new BufferedReader(new FileReader(newFile));
         String line;
         try {
