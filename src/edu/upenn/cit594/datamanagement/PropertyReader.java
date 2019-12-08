@@ -28,7 +28,7 @@ public class PropertyReader {
         int[] informationColumn = findColumn(firstLine);
         String line;
         while((line = br.readLine()) != null) {
-            String[] lineElements = line.split(",");
+            String[] lineElements = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
             String total_livable_areaStr = lineElements[informationColumn[0]].strip();
             String market_valueStr = lineElements[informationColumn[1]].strip();
             String zip_codeStr = lineElements[informationColumn[2]].strip();
@@ -50,9 +50,10 @@ public class PropertyReader {
     /*Check if the information in current line is valid */
     private boolean isValidResidence(String livableArea, String marketValue, String zipCode) {
 
-        boolean validLivableArea = Pattern.matches("^\\d+\\.?\\d*?$", livableArea);
-        boolean validMarketValue = Pattern.matches("^\\d+\\.?\\d*?$", marketValue);
-        boolean validZipCode = Pattern.matches("^\\d{5}-?\\d*?$", zipCode);
+        boolean validLivableArea = Pattern.matches("^\\d+\\.?\\d*$", livableArea);
+        boolean validMarketValue = Pattern.matches("^\\d+\\.?\\d*$", marketValue);
+//        boolean validZipCode = Pattern.matches("^[0-9]{5}-?\\d*$", zipCode);
+        boolean validZipCode = Pattern.matches("^[0-9]{5}.*$", zipCode);
         return validLivableArea && validMarketValue && validZipCode;
     }
 

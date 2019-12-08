@@ -4,6 +4,8 @@ import edu.upenn.cit594.data.Residence;
 import edu.upenn.cit594.datamanagement.PropertyReader;
 import edu.upenn.cit594.datamanagement.ResidentialInformationCollector;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,16 +31,16 @@ public class ResidentialProcessor {
 
     public double[] process(String zip) {
         List<Residence> selectedByZip = selectByZip(zip);
-        double[]information = infoCollector.getInformation(selectedByZip);
+        double[] information = infoCollector.getInformation(selectedByZip);
         int len = information.length;
         double sum = 0;
         for (int i = 0; i < len; i++) {
             sum += information[i];
         }
-//        System.out.println("The sum of market value is: " +sum+" "+len);
         //double average = sum / len;
-        return new double[] {sum, len};
+        return new double[]{sum, len};
     }
+
     private List<Residence> selectByZip(String zip) {
         List<Residence> residenceListZIP = new ArrayList<>();
         for (Residence r : residenceList) {
