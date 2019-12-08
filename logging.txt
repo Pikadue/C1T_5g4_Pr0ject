@@ -1,147 +1,36 @@
-1575740372575 json parking.json properties.csv population.txt logging.txt
-1575740372630 properties.csv
-1575740379440 population.txt
-1575740379466 parking.json
-1575740383632 1
-1575740385152 2
-1575740386165 3
-1575740388846 19112
-1575740393200 4
-1575740396768 19112
-1575740403394 19112
-1575740407486 5
-1575740417476 19112
-1575740430464 0
-TIME: 1575740516739 json parking.json properties.csv population.txt logging.txt
-TIME: 1575740516780 properties.csv
-TIME: 1575740523466 population.txt
-TIME: 1575740523476 parking.json
-TIME: 1575740526574 2
-TIME: 1575740528741 3
-TIME: 1575740530969 19991
-TIME: 1575740533816 0
-1575740798281 json parking.json properties.csv population.txt logging.txt
-1575740798307 properties.csv
-1575740804706 population.txt
-1575740804718 parking.json
-1575740809210 7
-1575740851204 json parking.json properties.csv population.txt logging.txt
-1575740851254 properties.csv
-1575740856472 population.txt
-1575740856483 parking.json
-1575740860605 7
-1575740870406 11
-1575740871826 a
-1575740873482 3
-1575740878370 12345
-1575740924889 1
-1575741018478 2
-1575752670743 json parking.json properties.csv population.txt logging.txt
-1575752670784 properties.csv
-1575752678228 population.txt
-1575752678238 parking.json
-1575752687844 3
-1575752688911 19112
-1575753089617 json parking.json properties.csv population.txt logging.txt
-1575753089659 properties.csv
-1575753096984 population.txt
-1575753096993 parking.json
-1575753099091 3
-1575753100500 19112
-1575753279607 json parking.json properties.csv population.txt logging.txt
-1575753279672 properties.csv
-1575753286315 population.txt
-1575753286325 parking.json
-1575753289356 3
-1575753290444 19112
-1575753393876 json parking.json properties.csv population.txt logging.txt
-1575753394045 properties.csv
-1575753400843 population.txt
-1575753400855 parking.json
-1575753404927 3
-1575753406757 19112
-1575753626821 json parking.json properties.csv population.txt logging.txt
-1575753626848 properties.csv
-1575753671984 json parking.json filter.csv population.txt logging.txt
-1575753672014 filter.csv
-1575753805357 json parking.json filter.csv population.txt logging.txt
-1575753805443 filter.csv
-1575754104233 json parking.json filter.csv population.txt logging.txt
-1575754104268 filter.csv
-1575754124191 json parking.json filter.csv population.txt logging.txt
-1575754124220 filter.csv
-1575754135604 json parking.json filter.csv population.txt logging.txt
-1575754135665 filter.csv
-1575754414331 json parking.json filter.csv population.txt logging.txt
-1575754414389 filter.csv
-1575754414407 population.txt
-1575754414421 parking.json
-1575754418746 3
-1575754420922 19112
-1575756591016 json parking.json properties.csv population.txt logging.txt
-1575756591049 properties.csv
-1575756597925 population.txt
-1575756597935 parking.json
-1575756600064 3
-1575756601263 19112
-1575757045026 json parking.json properties.csv population.txt logging.txt
-1575757045079 properties.csv
-1575757051414 population.txt
-1575757051424 parking.json
-1575757108002 3
-1575757111643 19112
-1575757180846 json parking.json properties.csv population.txt logging.txt
-1575757180879 properties.csv
-1575757186542 population.txt
-1575757186573 parking.json
-1575757228630 3
-1575757230447 19112
-1575757552212 json parking.json properties.csv population.txt logging.txt
-1575757552243 properties.csv
-1575757557953 population.txt
-1575757557968 parking.json
-1575757606177 json parking.json properties.csv population.txt logging.txt
-1575757606207 properties.csv
-1575757611248 population.txt
-1575757611257 parking.json
-1575757704960 json parking.json filter.csv population.txt logging.txt
-1575757704989 filter.csv
-1575757705005 population.txt
-1575757705013 parking.json
-1575757787305 json parking.json filter.csv population.txt logging.txt
-1575757787330 filter.csv
-1575757787348 population.txt
-1575757787360 parking.json
-1575757795744 json parking.json filter.csv population.txt logging.txt
-1575757795785 filter.csv
-1575757795803 population.txt
-1575757795816 parking.json
-1575758343323 json parking.json properties.csv population.txt logging.txt
-1575758343349 properties.csv
-1575758349237 population.txt
-1575758349247 parking.json
-1575758352794 3
-1575758354531 19112
-1575758914275 json parking.json properties.csv population.txt logging.txt
-1575758914305 properties.csv
-1575758920774 population.txt
-1575758920783 parking.json
-1575758970077 
-1575758970079 3
-1575758975488 19112
-1575759029693 json parking.json properties.csv population.txt logging.txt
-1575759029720 properties.csv
-1575759035445 population.txt
-1575759035456 parking.json
-1575759038599 3
-1575759040508 19112
-1575759078961 4
-1575759080713 19112
-1575759104413 3
-1575759106703 19109
-1575759133414 4
-1575759139658 19109
-1575759154614 3
-1575759158211 19113
-1575759161255 4
-1575759163818 19113
+1575760638353 json parking.json properties.csv population.txt logging.txt
+1575760638391 properties.csv
+1575760645547 population.txt
+1575760645561 parking.json
+1575760657401 5
+1575760664213 19102
+1575760692723 5
+1575760696591 19103
+1575760717466 5
+1575760719357 19112
+1575760874572 5
+1575760880122 19126
+1575761384106 5
+1575761387476 19148
+1575761544878 json parking.json properties.csv population.txt logging.txt
+1575761544924 properties.csv
+1575761552021 population.txt
+1575761552032 parking.json
+1575761554101 5
+1575761556781 19154
+1575761567422 5
+1575761568836 19115
+1575783763685 json parking.json properties.csv population.txt logging.txt
+1575783763746 properties.csv
+1575783773839 population.txt
+1575783773853 parking.json
+1575783776942 3
+1575783782291 19102
+1575783801221 3
+1575783804354 19103
+1575785110907 3
+1575785113382 19112
+1575785152066 3
+1575785155074 19113
+1575785169579 3
+1575785171302 19114

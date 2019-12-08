@@ -16,7 +16,7 @@ public class PropertyReader {
 
     public List<Residence> read() throws IOException {
 
-        List<Residence> residenceList = new ArrayList<>();//TODO
+        List<Residence> residenceList = new ArrayList<>();
         File newFile = new File(fileName);
         Logging.getInstance().log(fileName);
 
@@ -29,8 +29,8 @@ public class PropertyReader {
         String line;
         while((line = br.readLine()) != null) {
             String[] lineElements = line.split(",");
-            String total_livable_areaStr = lineElements[informationColumn[0]];
-            String market_valueStr = lineElements[informationColumn[1]];
+            String total_livable_areaStr = lineElements[informationColumn[0]].strip();
+            String market_valueStr = lineElements[informationColumn[1]].strip();
             String zip_codeStr = lineElements[informationColumn[2]].strip();
 
             if (isValidResidence(total_livable_areaStr, market_valueStr, zip_codeStr)) {
