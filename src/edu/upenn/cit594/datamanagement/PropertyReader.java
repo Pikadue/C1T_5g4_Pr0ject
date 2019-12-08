@@ -28,7 +28,8 @@ public class PropertyReader {
         int[] informationColumn = findColumn(firstLine);
         String line;
         while((line = br.readLine()) != null) {
-            String[] lineElements = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+//        	String[] lineElements = line.split(","); // this line is for fast processing ONLY
+        	String[] lineElements = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
             String total_livable_areaStr = lineElements[informationColumn[0]].strip();
             String market_valueStr = lineElements[informationColumn[1]].strip();
             String zip_codeStr = lineElements[informationColumn[2]].strip();

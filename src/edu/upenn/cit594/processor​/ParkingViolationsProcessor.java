@@ -100,7 +100,7 @@ public class ParkingViolationsProcessor {
 		return result;
 	}
 
-	// implementation of problem #6 step 1: top #1 reason for each ZIP Code in PA
+	// implementation of problem #6: top #1 reason for each ZIP Code in PA
 
 	public static Map<String, String>  getViolationReasonMap() {
 		Map<String, Map<String, Integer>> violationCountMap = new HashMap<>();
@@ -147,23 +147,6 @@ public class ParkingViolationsProcessor {
 
 
 		return violationReasonMap;
-	}
-
-	// implementation of problem #6 step 2: top #1 reason for each ZIP Code in PA
-	public static String getViolationReasons() {
-		String result = "";
-		if(violationReasonMap.isEmpty()) {
-			violationReasonMap = getViolationReasonMap();
-
-		} 
-		for(Entry<String, String> item: violationReasonMap.entrySet()) {
-			String zipCode = item.getKey();
-			String reason = item.getValue();
-			result = result + zipCode + " " + reason + '\n';
-
-		}
-
-		return result;
 	}
 
 }
