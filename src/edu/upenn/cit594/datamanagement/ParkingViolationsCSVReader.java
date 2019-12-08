@@ -38,6 +38,9 @@ public class ParkingViolationsCSVReader implements ParkingViolationsReader{
 			try {
 				while ((row = csvReader.readLine()) != null) {
 				    String[] data = row.split(",");
+				    if(data.length != 7) {
+				    	continue;
+				    }
 				    /*
 				     * 2013-04-03T15:15:00Z,36,METER EXPIRED CC,1322731,PA,2905938,19104
 				     */
