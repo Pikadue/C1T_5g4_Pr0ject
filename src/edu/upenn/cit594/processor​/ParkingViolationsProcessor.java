@@ -37,6 +37,9 @@ public class ParkingViolationsProcessor {
 		ParkingViolationsProcessor.violationReasonMap = new HashMap<>();
 
 		populationMap = PopulationReader.getPopulationMap(); 
+		// run the calculation when the program starts
+		avgFineMap = getAvgFineMap();
+		violationReasonMap = getViolationReasonMap();
 	}
 
 	// implementation of problem #2 step 1: total parking fines for each ZIP Code
@@ -45,18 +48,15 @@ public class ParkingViolationsProcessor {
 			String zipCode = item.getZipCode();
 			int fine = item.getFine();
 			String state = item.getState();
-			if(!state.equals("PA")) {
-				break;
-			}
-			if(zipCode.isBlank() || zipCode.isEmpty()) {
-				break;
-			}
-			if(parkingViolationFineMap.containsKey(zipCode)) {
-				int fineUpdate = parkingViolationFineMap.get(zipCode) + fine;
-				parkingViolationFineMap.put(zipCode, fineUpdate);
-			} else {
-				parkingViolationFineMap.put(zipCode, fine);
-			}
+			if(state.equals("PA") && !zipCode.isBlank() && !zipCode.isEmpty()) {
+				if(parkingViolationFineMap.containsKey(zipCode)) {
+					int fineUpdate = parkingViolationFineMap.get(zipCode) + fine;
+					parkingViolationFineMap.put(zipCode, fineUpdate);
+				}
+				else {
+					parkingViolationFineMap.put(zipCode, fine);
+				}
+			}	
 		}
 
 		return parkingViolationFineMap;
@@ -88,7 +88,7 @@ public class ParkingViolationsProcessor {
 		String result = "";
 		if(avgFineMap.isEmpty()) {
 			avgFineMap = getAvgFineMap();
-			
+
 		} 
 		for(Entry<String, BigDecimal> item: avgFineMap.entrySet()) {
 			String zipCode = item.getKey();
@@ -112,10 +112,10 @@ public class ParkingViolationsProcessor {
 			String state = item.getState();
 			int count =0;
 			if(!state.equals("PA")) {
-				break;
+				continue;
 			}
 			if(zipCode.isBlank() || zipCode.isEmpty()) {
-				break;
+				continue;
 			}
 			if(violationCountMap.containsKey(zipCode)) {
 				Map<String, Integer> tempMap = violationCountMap.get(zipCode);
@@ -148,13 +148,13 @@ public class ParkingViolationsProcessor {
 
 		return violationReasonMap;
 	}
-	
+
 	// implementation of problem #6 step 2: top #1 reason for each ZIP Code in PA
 	public static String getViolationReasons() {
 		String result = "";
 		if(violationReasonMap.isEmpty()) {
 			violationReasonMap = getViolationReasonMap();
-			
+
 		} 
 		for(Entry<String, String> item: violationReasonMap.entrySet()) {
 			String zipCode = item.getKey();
