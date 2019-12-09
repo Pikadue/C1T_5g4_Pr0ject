@@ -103,7 +103,7 @@ public class UserInput {
 				"3: show average market value for residences in a specified ZIP code\n" +
 				"4: show the average total livable area for residences in a specified ZIP code\n" +
 				"5: show the total residential market value per capita for a specified ZIP code\n" +
-				"6: show the top parking violation reason for the least liavbale area");
+				"6: show the top parking violation reason for the least livable area");
 
 	}
 
@@ -220,9 +220,9 @@ public class UserInput {
 
 	}
 
-	private LinkedHashMap<String, Double> sortHashMapByValues(HashMap<String, Double> passedMap) {
-		List<String> mapKeys = new ArrayList<>(passedMap.keySet());
-		List<Double> mapValues = new ArrayList<>(passedMap.values());
+	private LinkedHashMap<String, Double> sortHashMapByValues(HashMap<String, Double> unsortedMap) {
+		List<String> mapKeys = new ArrayList<>(unsortedMap.keySet());
+		List<Double> mapValues = new ArrayList<>(unsortedMap.values());
 		Collections.sort(mapValues);
 		Collections.sort(mapKeys);
 
@@ -235,7 +235,7 @@ public class UserInput {
 
 			while (keyIt.hasNext()) {
 				String key = keyIt.next();
-				Double comp1 = passedMap.get(key);
+				Double comp1 = unsortedMap.get(key);
 				Double comp2 = val;
 
 				if (comp1.equals(comp2)) {
