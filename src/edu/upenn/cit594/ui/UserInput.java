@@ -103,7 +103,7 @@ public class UserInput {
 				"3: show average market value for residences in a specified ZIP code\n" +
 				"4: show the average total livable area for residences in a specified ZIP code\n" +
 				"5: show the total residential market value per capita for a specified ZIP code\n" +
-				"6: show the top parking violation reason for the least livable area");
+				"6: show the top parking violation reason for the top 5 least livable areas");
 
 	}
 

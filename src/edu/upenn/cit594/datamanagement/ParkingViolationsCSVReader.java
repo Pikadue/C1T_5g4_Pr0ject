@@ -62,7 +62,7 @@ public class ParkingViolationsCSVReader implements ParkingViolationsReader{
 			}
 
 		} catch (FileNotFoundException e1) {
-			System.out.println("Invalid file!");
+			System.out.println("Parking violation file does not exist. Program exit.");
 			System.exit(0);
 		}
 		return parkingViolationsList;

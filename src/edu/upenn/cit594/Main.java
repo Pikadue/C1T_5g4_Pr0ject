@@ -18,7 +18,7 @@ public class Main {
 
         // Check if the extension meets txt/json
         if (!checkExtension(args[0])) {
-            System.out.println("Wrong tweet file format. Should be '.json or .text'. Program exits!");
+            System.out.println("Wrong input file format. Should be '.json or .csv'. Program exits!");
             System.exit(0);
 
         }

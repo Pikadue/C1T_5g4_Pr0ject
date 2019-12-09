@@ -75,7 +75,7 @@ public class ParkingViolationsJSONReader implements ParkingViolationsReader{
 			}
 			
 		} catch (IOException | ParseException e) {
-			System.out.println("Invalid parking file!");
+			System.out.println("Parking violation file does not exist. Program exit.");
             System.exit(0);
 		}
 		
