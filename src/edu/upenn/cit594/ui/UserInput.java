@@ -1,15 +1,12 @@
 package edu.upenn.cit594.ui;
 
 import edu.upenn.cit594.datamanagement.PopulationReader;
-import edu.upenn.cit594.datamanagement.PropertyReader;
 import edu.upenn.cit594.logging.Logging;
 import edu.upenn.cit594.processor​.ParkingViolationsProcessor;
 import edu.upenn.cit594.datamanagement.ResidentialMarketValueCollector;
 import edu.upenn.cit594.processor​.ResidentialProcessor;
 import edu.upenn.cit594.datamanagement.ResidentialTLACollector;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -178,35 +175,51 @@ public class UserInput {
 	private String handleSix() {
 		double livableAreaPerCapita = 0;
 		String violationReason = "no parking violation in this area";
-		String result = "No information for this request";
+		String result = "";
 
 
-		ResidentialTLACollector TLACollector = new ResidentialTLACollector();
-		ResidentialProcessor residentialProcessor = new ResidentialProcessor(TLACollector);
 		PopulationReader populationReader = new PopulationReader();
-		PropertyReader propertyReader = new PropertyReader();
-		Map<String, Double> totalLivableMap = propertyReader.getResidenceMap();
+		Map<String, Double> totalLivableMap = ResidentialProcessor.getResidenceMap();
 		
 		for(Entry<String, Double> item: totalLivableMap.entrySet()) {
 			String zipCode = item.getKey();
 			double totalLivableArea = item.getValue();
 			double population = populationReader.getPopulationPerZIP(zipCode);
+			
 			if(population != 0 && totalLivableArea != 0) {
 				livableAreaPerCapita = totalLivableArea / population;
+				avgLivableMap.put(zipCode, livableAreaPerCapita);
 			}
-			avgLivableMap.put(zipCode, livableAreaPerCapita);
+			
 		}
 		
-		Entry<String, Double> leastLivableArea = sortHashMapByValues(avgLivableMap).entrySet().iterator().next();
-		String zipCode = leastLivableArea.getKey();
-		double leastLivableAreaVal = leastLivableArea.getValue();
-
-		Map<String, String> violationMap = ParkingViolationsProcessor.getViolationReasonMap();
-		if(violationMap.containsKey(zip)) {
-			violationReason = violationMap.get(zip);
+		int i = 5;
+		for(Entry<String, Double> item: sortHashMapByValues(avgLivableMap).entrySet()) {
+			String zipCode = item.getKey();
+			Map<String, String> violationMap = ParkingViolationsProcessor.getViolationReasonMap();
+			if(violationMap.containsKey(zipCode)) {
+				violationReason = violationMap.get(zipCode);
+			}
+			
+			result += "The top parking violation reason for the least livable area per capita " 
+			+ zipCode + " is " + violationReason + '\n';
+			
+			i--;
+			
+			if(i == 0) {
+				break;
+			}
 		}
-		result = "The top parking violation reason for the least livable area per capita" 
-		+ zipCode + " is " + violationReason + '\n';
+		
+//		Entry<String, Double> leastLivableArea = sortHashMapByValues(avgLivableMap).entrySet().iterator().next();
+//		String zipCode = leastLivableArea.getKey();
+//
+//		Map<String, String> violationMap = ParkingViolationsProcessor.getViolationReasonMap();
+//		if(violationMap.containsKey(zipCode)) {
+//			violationReason = violationMap.get(zipCode);
+//		}
+//		result = "The top parking violation reason for the least livable area per capita " 
+//		+ zipCode + " is " + violationReason + '\n';
 		
 
 		return result;

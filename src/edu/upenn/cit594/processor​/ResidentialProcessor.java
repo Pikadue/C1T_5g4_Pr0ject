@@ -8,11 +8,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ResidentialProcessor {
     ResidentialInformationCollector infoCollector;
     static List<Residence> residenceList;
+    private static HashMap<String, Double> residentialMap;
     PropertyReader pr;
 
     public ResidentialProcessor(ResidentialInformationCollector infoCollector) {
@@ -53,6 +56,32 @@ public class ResidentialProcessor {
         return residenceListZIP;
     }
 
+    private static void generateResidentialMap() {
+    	residentialMap = new HashMap<>();
+    	double sumLivableArea = 0;
+    	for (Residence x : residenceList) {
+    		String zip = x.getZipCode();
+    		Double livableArea = x.getTotalLivableArea();
+    		if (residentialMap.keySet().contains(zip)) {
+    			sumLivableArea = residentialMap.get(zip) + livableArea;
+    			residentialMap.put(zip, sumLivableArea);
+    		} else {
+    			
+    			residentialMap.put(zip, livableArea);
+    		}
+    		//            System.out.println("test");
+
+    	}
+    }
+    
+    public static Map<String, Double> getResidenceMap(){
+    	if(residentialMap == null) {
+    		generateResidentialMap();
+    	}
+    	return residentialMap;
+    }
+
+    
     public List<Residence> getResidenceList() {
         return residenceList;
     }
