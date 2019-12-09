@@ -6,13 +6,13 @@ package edu.upenn.cit594.data;
  */
 
 public class ParkingViolation {
-    String ticket_number;
-    String plate_id;
-    String date;
-    String zip_code;
-    String violation;
-    int fine;
-    String state;
+    private String ticket_number;
+    private String plate_id;
+    private String date;
+    private String zip_code;
+    private String violation;
+    private int fine;
+    private String state;
 
     public ParkingViolation(String ticket_number, String plate_id, String date, String zip_code,
                             String violation, int fine, String state) {

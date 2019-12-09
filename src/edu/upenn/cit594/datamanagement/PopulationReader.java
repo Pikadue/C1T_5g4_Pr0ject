@@ -44,7 +44,7 @@ public class PopulationReader {
             try {
                 br.close();
             } catch (IOException e) {
-                e.printStackTrace();//todo
+                System.out.println("population file cannot be closed");
             }
         }
 

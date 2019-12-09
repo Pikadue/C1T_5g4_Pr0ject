@@ -7,12 +7,12 @@ import java.io.IOException;
 public class Logging {
 
     private static Logging obj;
-    private String fileName;
+    private static String fileName;
     private static File file;
 
     private Logging(String fileName) {
 
-        this.fileName = fileName;
+        Logging.fileName = fileName;
         file = new File(fileName);
 
     }
@@ -23,6 +23,7 @@ public class Logging {
 
     public static Logging getInstance(String fileName) {
         if (obj == null) {
+//            obj = new Logging(Logging.fileName);
             obj = new Logging(fileName);
 
         }

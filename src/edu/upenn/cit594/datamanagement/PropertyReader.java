@@ -4,19 +4,19 @@ import edu.upenn.cit594.data.Residence;
 import edu.upenn.cit594.logging.Logging;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class PropertyReader {
-    String fileName;
+    private String fileName;
     public PropertyReader(String fileName){
         this.fileName = fileName;
     };
 
     public List<Residence> read() throws IOException {
 
-        List<Residence> residenceList = new ArrayList<>();
+        List<Residence> residenceList = new LinkedList<>();
         File newFile = new File(fileName);
         Logging.getInstance().log(fileName);
 

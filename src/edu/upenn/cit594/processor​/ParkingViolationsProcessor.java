@@ -19,8 +19,9 @@ public class ParkingViolationsProcessor {
 	private static List<ParkingViolation> parkingViolationList;
 	private static Map<String, Integer> populationMap;
 	private static Map<String, Integer> parkingViolationFineMap; //zipcode, total fine
-	private static Map<String, BigDecimal> avgFineMap;
+	private static Map<String, BigDecimal> avgFineMap; //TODO
 	private static Map<String, String> violationReasonMap;
+	private static String avgFineResult = "";
 
 
 	public ParkingViolationsProcessor(String format, String input) {
@@ -38,8 +39,8 @@ public class ParkingViolationsProcessor {
 
 		populationMap = PopulationReader.getPopulationMap(); 
 		// run the calculation when the program starts
-		avgFineMap = getAvgFineMap();
-		violationReasonMap = getViolationReasonMap();
+//		avgFineMap = getAvgFineMap();
+//		violationReasonMap = getViolationReasonMap();
 	}
 
 	// implementation of problem #2 step 1: total parking fines for each ZIP Code
@@ -68,36 +69,37 @@ public class ParkingViolationsProcessor {
 	private static Map<String, BigDecimal>  getAvgFineMap() {
 		if(parkingViolationFineMap.isEmpty()) {
 			parkingViolationFineMap = generateParkingFineMap();
-		}
-		for(Entry<String, Integer> item: populationMap.entrySet()) {
-			String zipCode = item.getKey();
-			int population = item.getValue();
-			double avgFine = 0;
-			if(parkingViolationFineMap.containsKey(zipCode)) {
-				avgFine = (double) parkingViolationFineMap.get(zipCode)/ (double) population;
-				BigDecimal avgFineUpdate = BigDecimal.valueOf(avgFine);
-				avgFineUpdate = avgFineUpdate.setScale(4, RoundingMode.DOWN);
-				avgFineMap.put(zipCode, avgFineUpdate);
-			} 
+			for(Entry<String, Integer> item: populationMap.entrySet()) {
+				String zipCode = item.getKey();
+				int population = item.getValue();
+				double avgFine = 0;
+				if(parkingViolationFineMap.containsKey(zipCode)) {
+					avgFine = (double) parkingViolationFineMap.get(zipCode)/ (double) population;
+					BigDecimal avgFineUpdate = BigDecimal.valueOf(avgFine);
+					avgFineUpdate = avgFineUpdate.setScale(4, RoundingMode.DOWN);
+					avgFineMap.put(zipCode, avgFineUpdate);
+				} 
+			}
 		}
 		return avgFineMap;
 	}
 
 
 	public static String getAvgFine() {
-		String result = "";
+
 		if(avgFineMap.isEmpty()) {
 			avgFineMap = getAvgFineMap();
+			for(Entry<String, BigDecimal> item: avgFineMap.entrySet()) {
+				String zipCode = item.getKey();
+				BigDecimal avgFine = item.getValue(); 
+				avgFineResult = avgFineResult + zipCode + " " + avgFine + '\n';
+
+			}
 
 		} 
-		for(Entry<String, BigDecimal> item: avgFineMap.entrySet()) {
-			String zipCode = item.getKey();
-			BigDecimal avgFine = item.getValue(); 
-			result = result + zipCode + " " + avgFine + '\n';
+		
 
-		}
-
-		return result;
+		return avgFineResult;
 	}
 
 	// implementation of problem #6: top #1 reason for each ZIP Code in PA

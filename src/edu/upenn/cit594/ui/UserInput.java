@@ -82,7 +82,7 @@ public class UserInput {
 					break;
 				case "6":
 					System.out.println(handleSix());
-					
+
 					break;
 				default:
 					System.out.println("Invalid selection");
@@ -93,7 +93,7 @@ public class UserInput {
 				System.out.println("Please select from 0-6.");
 			}
 		}
-
+		in.close();
 
 	}
 
@@ -136,7 +136,7 @@ public class UserInput {
 		double result = 0;
 		if (isValidZip(zip)) {
 			if (requestedZIP_P4.keySet().contains(zip)) {
-				result = requestedZIP_P3.get(zip);
+				result = requestedZIP_P4.get(zip);
 			} else {
 				ResidentialTLACollector TLACollector = new ResidentialTLACollector();
 				ResidentialProcessor residentialProcessor = new ResidentialProcessor(TLACollector);
@@ -171,56 +171,46 @@ public class UserInput {
 		return result;
 	}
 
-	HashMap<String, Double> avgLivableMap = new HashMap<>();
+
+	String result = "";
 	private String handleSix() {
-		double livableAreaPerCapita = 0;
-		String violationReason = "no parking violation in this area";
-		String result = "";
+		HashMap<String, Double> avgLivableMap = new HashMap<>();
+		if(result.isEmpty()) {
+			double livableAreaPerCapita = 0;
+			String violationReason = "no parking violation in this area";
+			PopulationReader populationReader = new PopulationReader();
+			Map<String, Double> totalLivableMap = ResidentialProcessor.getResidenceMap();
 
+			for(Entry<String, Double> item: totalLivableMap.entrySet()) {
+				String zipCode = item.getKey();
+				double totalLivableArea = item.getValue();
+				double population = populationReader.getPopulationPerZIP(zipCode);
 
-		PopulationReader populationReader = new PopulationReader();
-		Map<String, Double> totalLivableMap = ResidentialProcessor.getResidenceMap();
-		
-		for(Entry<String, Double> item: totalLivableMap.entrySet()) {
-			String zipCode = item.getKey();
-			double totalLivableArea = item.getValue();
-			double population = populationReader.getPopulationPerZIP(zipCode);
-			
-			if(population != 0 && totalLivableArea != 0) {
-				livableAreaPerCapita = totalLivableArea / population;
-				avgLivableMap.put(zipCode, livableAreaPerCapita);
+				if(population != 0 && totalLivableArea != 0) {
+					livableAreaPerCapita = totalLivableArea / population;
+					avgLivableMap.put(zipCode, livableAreaPerCapita);
+				}
+
 			}
-			
-		}
-		
-		int i = 5;
-		for(Entry<String, Double> item: sortHashMapByValues(avgLivableMap).entrySet()) {
-			String zipCode = item.getKey();
-			Map<String, String> violationMap = ParkingViolationsProcessor.getViolationReasonMap();
-			if(violationMap.containsKey(zipCode)) {
-				violationReason = violationMap.get(zipCode);
-			}
-			
-			result += "The top parking violation reason for the least livable area per capita " 
-			+ zipCode + " is " + violationReason + '\n';
-			
-			i--;
-			
-			if(i == 0) {
-				break;
-			}
-		}
-		
-//		Entry<String, Double> leastLivableArea = sortHashMapByValues(avgLivableMap).entrySet().iterator().next();
-//		String zipCode = leastLivableArea.getKey();
-//
-//		Map<String, String> violationMap = ParkingViolationsProcessor.getViolationReasonMap();
-//		if(violationMap.containsKey(zipCode)) {
-//			violationReason = violationMap.get(zipCode);
-//		}
-//		result = "The top parking violation reason for the least livable area per capita " 
-//		+ zipCode + " is " + violationReason + '\n';
-		
+
+			int i = 5;
+			for(Entry<String, Double> item: sortHashMapByValues(avgLivableMap).entrySet()) {
+				String zipCode = item.getKey();
+				Map<String, String> violationMap = ParkingViolationsProcessor.getViolationReasonMap();
+				if(violationMap.containsKey(zipCode)) {
+					violationReason = violationMap.get(zipCode);
+				}
+
+				result += "The top parking violation reason for the least livable area per capita " 
+						+ zipCode + " is " + violationReason + '\n';
+
+				i--;
+
+				if(i == 0) {
+					break;
+				}
+			}	
+		} 
 
 		return result;
 	}

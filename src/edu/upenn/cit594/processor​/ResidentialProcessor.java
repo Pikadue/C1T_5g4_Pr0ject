@@ -4,8 +4,6 @@ import edu.upenn.cit594.data.Residence;
 import edu.upenn.cit594.datamanagement.PropertyReader;
 import edu.upenn.cit594.datamanagement.ResidentialInformationCollector;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,19 +11,19 @@ import java.util.List;
 import java.util.Map;
 
 public class ResidentialProcessor {
-    ResidentialInformationCollector infoCollector;
-    static List<Residence> residenceList;
+    private ResidentialInformationCollector infoCollector;
+    private static List<Residence> residenceList;
     private static HashMap<String, Double> residentialMap;
-    PropertyReader pr;
+    private PropertyReader propertyReader;
 
     public ResidentialProcessor(ResidentialInformationCollector infoCollector) {
         this.infoCollector = infoCollector;
     }
 
     public ResidentialProcessor(PropertyReader pr) {
-        this.pr = pr;
+        this.propertyReader = pr;
         try {
-            residenceList = pr.read();
+            residenceList = propertyReader.read();
         } catch (IOException e) {
             System.out.println("The property file is unavailable. Program exits!");
             System.exit(0);
@@ -49,7 +47,6 @@ public class ResidentialProcessor {
         for (Residence r : residenceList) {
             if (r.getZipCode().equals(zip)) {
                 residenceListZIP.add(r);
-//                System.out.println(r);
 
             }
         }
@@ -69,7 +66,6 @@ public class ResidentialProcessor {
     			
     			residentialMap.put(zip, livableArea);
     		}
-    		//            System.out.println("test");
 
     	}
     }

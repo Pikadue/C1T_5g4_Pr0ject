@@ -22,8 +22,8 @@ import edu.upenn.cit594.data.ParkingViolation;
  */
 
 public class ParkingViolationsJSONReader implements ParkingViolationsReader{
-	String fileName;
-	List<ParkingViolation> parkingViolationsList;
+	private String fileName;
+	private List<ParkingViolation> parkingViolationsList;
 
 
 	public ParkingViolationsJSONReader(String input){
@@ -53,7 +53,7 @@ public class ParkingViolationsJSONReader implements ParkingViolationsReader{
 				JSONObject parkingViolation = (JSONObject) iter.next();
 				// use the "get" method to print the value associated with that key
 				
-				/*
+				/* Data example: 
 				 * [{"ticket_number":2905938,
 				 * "plate_id":"1322731",
 				 * "date":"2013-04-03T15:15:00Z",

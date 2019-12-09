@@ -18,15 +18,15 @@ import edu.upenn.cit594.logging.Logging;
  */
 
 public class ParkingViolationsCSVReader implements ParkingViolationsReader{
-	String fileName;
-	List<ParkingViolation> parkingViolationsList;
+	private String fileName;
+	private List<ParkingViolation> parkingViolationsList;
 
 
 	public ParkingViolationsCSVReader(String input){
 		fileName = input;
 		parkingViolationsList = new ArrayList<>();
 	}
-	
+
 	@Override
 	public List<ParkingViolation> getAllParkingViolation() {
 		// TODO Auto-generated method stub
@@ -37,15 +37,15 @@ public class ParkingViolationsCSVReader implements ParkingViolationsReader{
 			BufferedReader csvReader = new BufferedReader(fileReader);
 			try {
 				while ((row = csvReader.readLine()) != null) {
-				    String[] data = row.split(",");
-				    if(data.length != 7) {
-				    	continue;
-				    }
-				    /*
-				     * 2013-04-03T15:15:00Z,36,METER EXPIRED CC,1322731,PA,2905938,19104
-				     */
-				    
-				    String date = data[0];
+					String[] data = row.split(",");
+					if(data.length != 7) {
+						continue;
+					}
+					/*
+					 * Data example : 2013-04-03T15:15:00Z,36,METER EXPIRED CC,1322731,PA,2905938,19104
+					 */
+
+					String date = data[0];
 					int fine = Integer.parseInt(data[1]);
 					String violation = data[2];
 					String plate_id = data[3];
@@ -58,12 +58,12 @@ public class ParkingViolationsCSVReader implements ParkingViolationsReader{
 				csvReader.close();
 			} catch (NumberFormatException | IOException e) {
 				System.out.println("Invalid data!");
-	            System.exit(0);
+				System.exit(0);
 			}
-			
+
 		} catch (FileNotFoundException e1) {
-            System.out.println("Invalid file!");
-            System.exit(0);
+			System.out.println("Invalid file!");
+			System.exit(0);
 		}
 		return parkingViolationsList;
 	}

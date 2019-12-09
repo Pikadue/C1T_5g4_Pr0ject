@@ -31,12 +31,12 @@ public class Main {
 
         Logging.getInstance(logFileName).log(String.join(" ",args));
 
-
-        PropertyReader pr = new PropertyReader(propertyFileName);
-        ResidentialProcessor residentialProcessor = new ResidentialProcessor(pr);
+        PropertyReader propertyReader = new PropertyReader(propertyFileName);
+        ResidentialProcessor residentialProcessor = new ResidentialProcessor(propertyReader);
         PopulationReader populationReader = new PopulationReader(populationFileName);
         ParkingViolationsProcessor parkingViolationProcessor = new ParkingViolationsProcessor(ticketFormat,ticketFileName);
         UserInput user1 = UserInput.getInstance();
+
 
 
     }
