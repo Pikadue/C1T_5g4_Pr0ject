@@ -25,6 +25,10 @@ public class PropertyReader {
         firstLine = br.readLine();
 
         //[0] total_livable_area [1] market_value [2]zip_code
+        if (firstLine == null || firstLine.isEmpty()) {
+        	br.close();
+        	return residenceList;
+        }
         int[] informationColumn = findColumn(firstLine);
         String line;
         while((line = br.readLine()) != null) {

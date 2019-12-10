@@ -175,7 +175,7 @@ public class UserInput {
 	String result = "";
 	private String handleSix() {
 		HashMap<String, Double> avgLivableMap = new HashMap<>();
-		if(result.isEmpty()) {
+		if(result == null || result.isEmpty()) {
 			double livableAreaPerCapita = 0;
 			String violationReason = "no parking violation in this area";
 			PopulationReader populationReader = new PopulationReader();
