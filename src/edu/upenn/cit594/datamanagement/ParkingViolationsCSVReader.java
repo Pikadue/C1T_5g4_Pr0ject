@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import edu.upenn.cit594.data.ParkingViolation;
@@ -24,7 +24,7 @@ public class ParkingViolationsCSVReader implements ParkingViolationsReader{
 
 	public ParkingViolationsCSVReader(String input){
 		fileName = input;
-		parkingViolationsList = new ArrayList<>();
+		parkingViolationsList = new LinkedList<>();
 	}
 
 	@Override

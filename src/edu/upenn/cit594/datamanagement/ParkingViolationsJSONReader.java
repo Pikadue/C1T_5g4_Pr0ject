@@ -2,8 +2,8 @@ package edu.upenn.cit594.datamanagement;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import edu.upenn.cit594.logging.Logging;
@@ -28,7 +28,7 @@ public class ParkingViolationsJSONReader implements ParkingViolationsReader{
 
 	public ParkingViolationsJSONReader(String input){
 		fileName = input;
-		parkingViolationsList = new ArrayList<>();
+		parkingViolationsList = new LinkedList<>();
 	}
 
 
