@@ -22,6 +22,7 @@ public class ParkingViolationsProcessor {
 	private static Map<String, BigDecimal> avgFineMap; //TODO
 	private static Map<String, String> violationReasonMap;
 	private static String avgFineResult = "";
+	private PopulationReader populationReader;
 
 
 	public ParkingViolationsProcessor(String format, String input) {
@@ -36,8 +37,9 @@ public class ParkingViolationsProcessor {
 		ParkingViolationsProcessor.parkingViolationFineMap = new HashMap<>();
 		ParkingViolationsProcessor.avgFineMap = new TreeMap<>();
 		ParkingViolationsProcessor.violationReasonMap = new HashMap<>();
-
-		populationMap = PopulationReader.getPopulationMap(); 
+		populationReader = new PopulationReader();
+		populationMap = populationReader.getPopulationMap();
+		
 		// run the calculation when the program starts
 //		avgFineMap = getAvgFineMap();
 //		violationReasonMap = getViolationReasonMap();

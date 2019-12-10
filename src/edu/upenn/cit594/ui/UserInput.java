@@ -184,7 +184,7 @@ public class UserInput {
 			for(Entry<String, Double> item: totalLivableMap.entrySet()) {
 				String zipCode = item.getKey();
 				double totalLivableArea = item.getValue();
-				double population = populationReader.getPopulationPerZIP(zipCode);
+				int population = populationReader.getPopulationPerZIP(zipCode);
 
 				if(population != 0 && totalLivableArea != 0) {
 					livableAreaPerCapita = totalLivableArea / population;

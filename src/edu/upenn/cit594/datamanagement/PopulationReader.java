@@ -67,7 +67,7 @@ public class PopulationReader {
         return totalPopulation;
     }
     
-    public static Map<String, Integer> getPopulationMap(){
+    public Map<String, Integer> getPopulationMap(){
     	return populationMap;
     }
 }
