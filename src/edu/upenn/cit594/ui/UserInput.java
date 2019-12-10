@@ -181,6 +181,9 @@ public class UserInput {
 			PopulationReader populationReader = new PopulationReader();
 			Map<String, Double> totalLivableMap = ResidentialProcessor.getResidenceMap();
 
+			if(totalLivableMap == null || totalLivableMap.isEmpty()) {
+				result = "no information available\n";
+			}
 			for(Entry<String, Double> item: totalLivableMap.entrySet()) {
 				String zipCode = item.getKey();
 				double totalLivableArea = item.getValue();

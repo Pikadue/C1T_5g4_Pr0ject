@@ -87,3 +87,33 @@
 1575944426977 3
 1575944428356 19102
 1575944430775 0
+1575944818597 csv parkingEmpty.csv propertyEmpty.csv populationEmpty.txt logFile.txt
+1575944818602 propertyEmpty.csv
+1575944818604 populationEmpty.txt
+1575944818607 parkingEmpty.csv
+1575944820161 6
+1575944965634 csv parkingEmpty.csv propertyEmpty.csv populationEmpty.txt logFile.txt
+1575944965637 propertyEmpty.csv
+1575944965638 populationEmpty.txt
+1575944965641 parkingEmpty.csv
+1575944967177 6
+1575944992159 csv parkingEmpty.csv propertyEmpty.csv populationEmpty.txt logFile.txt
+1575944992161 propertyEmpty.csv
+1575944992162 populationEmpty.txt
+1575944992163 parkingEmpty.csv
+1575944993653 6
+1575945309450 csv parkingEmpty.csv propertyEmpty.csv populationEmpty.txt logFile.txt
+1575945309455 propertyEmpty.csv
+1575945309457 populationEmpty.txt
+1575945309460 parkingEmpty.csv
+1575945311067 6
+1575945323902 csv parkingEmpty.csv propertyEmpty.csv populationEmpty.txt logFile.txt
+1575945323903 propertyEmpty.csv
+1575945323904 populationEmpty.txt
+1575945323906 parkingEmpty.csv
+1575945325412 6
+1575945427916 csv parkingEmpty.csv propertyEmpty.csv populationEmpty.txt logFile.txt
+1575945427917 propertyEmpty.csv
+1575945427918 populationEmpty.txt
+1575945427919 parkingEmpty.csv
+1575945429501 6
