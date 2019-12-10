@@ -7,14 +7,10 @@ import java.io.IOException;
 public class Logging {
 
     private static Logging obj;
-    private static String fileName;
     private static File file;
 
     private Logging(String fileName) {
-
-        Logging.fileName = fileName;
         file = new File(fileName);
-
     }
 
     public static Logging getInstance() {
